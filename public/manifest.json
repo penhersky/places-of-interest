@@ -1,0 +1,17 @@
+{
+  "name": "sitename.com",
+  "short_name": "sitename",
+  "theme_color": "#ffff",
+  "background_color": "#ffff",
+  "display": "standalone",
+  "orientation": "any",
+  "start_url": "/",
+  "description": "",
+  "icons": [
+    {
+      "src": "48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    }
+  ]
+}

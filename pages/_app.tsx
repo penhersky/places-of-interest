@@ -1,7 +1,22 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import "../styles/globals.scss";
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
-}
-export default MyApp
+import type { AppProps } from "next/app";
+import Head from "next/head";
+import { appWithTranslation } from "next-i18next";
+import { Provider } from "react-redux";
+
+import store from "../store/store";
+
+const RootApp = ({ Component, pageProps }: AppProps) => (
+  <>
+    <Head>
+      <title>Places of interest</title>
+    </Head>
+    <Provider store={store}>
+      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+      <Component {...pageProps} />
+    </Provider>
+  </>
+);
+
+export default appWithTranslation(RootApp);
