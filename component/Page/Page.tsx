@@ -2,12 +2,14 @@ import clsx from "clsx";
 import React from "react";
 
 import { IPageWrapperProps } from "../../models";
+import Header from "../Header/Header";
 import Seo from "./seo";
 
 const Page: React.FC<IPageWrapperProps> = ({
   children,
   offContainer,
   classNames,
+  hiddenHeader,
   seo,
 }) => (
   <>
@@ -16,7 +18,14 @@ const Page: React.FC<IPageWrapperProps> = ({
       keywords={seo.keywords}
       title={seo.title}
     />
-    <div className={clsx(offContainer || "container", classNames)}>
+    {hiddenHeader || <Header />}
+    <div
+      className={clsx(
+        offContainer || "container",
+        hiddenHeader || "header-margin",
+        classNames
+      )}
+    >
       {children}
     </div>
   </>

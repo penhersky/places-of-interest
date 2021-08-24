@@ -10,5 +10,6 @@ export interface IPageWrapperProps {
   children: React.ReactNode;
   offContainer?: boolean;
   classNames?: string;
+  hiddenHeader?: boolean;
   seo: ISeoProps;
 }

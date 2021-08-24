@@ -1,0 +1,8 @@
+{
+  "text": "1234",
+  "menu": {
+    "/": "Home",
+    "/recommendation": "Recommendation",
+    "/rating": "Rating"
+  }
+}
