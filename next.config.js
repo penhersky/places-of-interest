@@ -6,4 +6,7 @@ module.exports = {
   reactStrictMode: true,
   i18n,
   ...withLess({}),
+  env: {
+    MAP_ACCESS_KEY: process.env.MAP_ACCESS_KEY,
+  },
 };
