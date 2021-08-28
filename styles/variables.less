@@ -1,8 +1,10 @@
 @black: black;
 @global-background: white;
+@gray: rgb(167, 167, 167);
 
 // ant
 @primary-color: rgba(34, 147, 176, 1);
+@secondary-color: gray;
 @link-color: #2293b0;
 @success-color: #52c41a;
 @warning-color: #faad14;
@@ -13,17 +15,28 @@
 @text-color-secondary: rgba(0, 0, 0, 0.45);
 @disabled-color: rgba(0, 0, 0, 0.25);
 @border-radius-base: 5px;
+@border-radius-baseX2: @border-radius-base * 2;
 @border-color-base: #d9d9d9;
 @box-shadow-base: 0 3px 6px -4px rgba(0, 0, 0, 0.12),
   0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
 
+// custom
+
 // size
 @border-radius-small: 3px;
+@container: 1400px;
 
 // mobile
 @mobile-version: 768px;
-@header-height-mobile: 50px;
+@menu-height-mobile: 50px;
+@header-height-mobile: 40px;
 
 // constants
 @header-z-index: 1001;
 @header-height: 60px;
+
+// animation
+
+@animation-speed-fast: 0.3s;
+@animation-speed-medium: 0.5s;
+@animation-speed-slow: 1s;

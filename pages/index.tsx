@@ -10,7 +10,7 @@ const Home: NextPage = () => {
 
   return (
     <PageWrapper seo={{ description: "", keywords: [], title: "title" }}>
-      <div>
+      <div style={{ height: 2000 }}>
         <Typography.Title level={1}>{t("hello")}</Typography.Title>
         <Button type="primary">{t("click-me")}</Button>
       </div>
