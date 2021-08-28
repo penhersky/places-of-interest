@@ -7,7 +7,8 @@
     "plugin:react/recommended",
     "airbnb",
     "prettier",
-    "eslint:recommended"
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -19,6 +20,14 @@
     "sourceType": "module"
   },
   "plugins": ["react", "@typescript-eslint", "simple-import-sort"],
+  "overrides": [
+    {
+      "files": ["*.tsx"],
+      "rules": {
+        "no-undef": "off"
+      }
+    }
+  ],
   "rules": {
     "react/prop-types": "off",
     "react/jsx-fragments": "off",

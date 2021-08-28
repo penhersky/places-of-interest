@@ -1,3 +1,9 @@
+import {
+  AimOutlined,
+  BarChartOutlined,
+  HomeOutlined,
+  StarOutlined,
+} from "@ant-design/icons";
 import { Row } from "antd";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,6 +19,8 @@ import HeaderItem from "./headerItem";
 const Header = () => {
   const { t } = useTranslation();
 
+  const icons = [HomeOutlined, StarOutlined, AimOutlined, BarChartOutlined];
+
   return (
     <div className="header">
       <div className="header__content container">
@@ -20,8 +28,15 @@ const Header = () => {
           <Image src={logo} />
         </div>
         <Row className="header__center">
-          {headerLinks.map((item) => (
-            <HeaderItem key={uuidv4()} link={item}>
+          {headerLinks.map((item, i) => (
+            <HeaderItem
+              key={uuidv4()}
+              link={item}
+              icon={({ className }) => {
+                const Icon = icons[i];
+                return <Icon className={className} />;
+              }}
+            >
               {t(`header:menu.${item}`)}
             </HeaderItem>
           ))}

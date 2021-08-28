@@ -1,4 +1,4 @@
-export const headerLinks = ["/", "/recommendation", "/rating"];
+export const headerLinks = ["/", "/for-you", "/around", "/rating"];
 
 export const paths = {
   auth: {

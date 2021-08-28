@@ -2,7 +2,8 @@
   "text": "1234",
   "menu": {
     "/": "Home",
-    "/recommendation": "Recommendation",
-    "/rating": "Rating"
+    "/for-you": "For you",
+    "/rating": "Rating",
+    "/around": "Around me"
   }
 }
