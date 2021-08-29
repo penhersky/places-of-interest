@@ -13,13 +13,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
-import React from "react";
+import React, { useState } from "react";
 import { useWindowScroll } from "react-use";
 import { v4 as uuidv4 } from "uuid";
 
 import logo from "../../assets/logo.svg";
 import { headerLinks, paths } from "../../models/constants/routes";
 import { LocaleSelect } from "../shared";
+import Drawer from "./drawer";
 import HeaderItem from "./headerItem";
 
 const scrolledHeight = 10;
@@ -28,6 +29,7 @@ const Header = () => {
   const router = useRouter();
   const scroll = useWindowScroll();
   const { t } = useTranslation();
+  const [visible, setVisible] = useState(false);
 
   const icons = [HomeOutlined, StarOutlined, AimOutlined, BarChartOutlined];
 
@@ -35,7 +37,8 @@ const Header = () => {
 
   const onBackHandler = () => router.back();
 
-  const onOpenDrawerHandler = () => {};
+  const onOpenDrawerHandler = () => setVisible(true);
+  const onCloseDrawerHandler = () => setVisible(false);
 
   return (
     <>
@@ -86,6 +89,7 @@ const Header = () => {
           <Link href={paths.auth.login}>{t`auth:login`}</Link>
         </div>
       </div>
+      <Drawer visible={visible} onClose={onCloseDrawerHandler} />
     </>
   );
 };

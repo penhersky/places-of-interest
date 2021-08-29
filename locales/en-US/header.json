@@ -1,9 +1,9 @@
 {
-  "text": "1234",
   "menu": {
     "/": "Home",
     "/for-you": "For you",
     "/rating": "Rating",
     "/around": "Around me"
-  }
+  },
+  "loginDescription": "You need to log in to store personal data, manage the application, tweak it for yourself and better understand your interests!"
 }

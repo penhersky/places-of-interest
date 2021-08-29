@@ -1,2 +1,2 @@
-// eslint-disable-next-line import/prefer-default-export
+export { default as Link } from "./Link/Link";
 export { default as LocaleSelect } from "./LocalesSelect/LocaleSelect";
