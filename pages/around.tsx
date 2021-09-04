@@ -1,7 +1,7 @@
 import {
   AimOutlined,
   EnvironmentOutlined,
-  HomeOutlined,
+  // HomeOutlined,
 } from "@ant-design/icons";
 import React from "react";
 import ReactMapGL, { Layer, Marker, Source } from "react-map-gl";
@@ -21,7 +21,7 @@ const to = {
 };
 
 const Around = () => {
-  const [viewport, setViewport] = React.useState({
+  const [viewport /* , setViewport */] = React.useState({
     latitude: (from.latitude + to.latitude) / 2,
     longitude: (from.longitude + to.longitude) / 2,
     zoom: 14,
@@ -39,9 +39,9 @@ const Around = () => {
           dragPan
           bearing={0}
           pitch={0}
-          onViewportChange={(view: any) => setViewport(view)}
-          onResize={(data: any) => console.log(data)}
-          onViewStateChange={(data: any) => console.log(data)}
+          // onViewportChange={(view: any) => setViewport(view)}
+          // onResize={(data: any) => console.log(data)}
+          // onViewStateChange={(data: any) => console.log(data)}
         >
           <Marker
             latitude={from.latitude}

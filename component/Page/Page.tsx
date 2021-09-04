@@ -2,6 +2,7 @@ import clsx from "clsx";
 import React from "react";
 
 import { IPageWrapperProps } from "../../models";
+import AuthModel from "../auth/model/AuthModel";
 import Header from "../Header/Header";
 import Seo from "./seo";
 
@@ -18,6 +19,7 @@ const Page: React.FC<IPageWrapperProps> = ({
       keywords={seo.keywords}
       title={seo.title}
     />
+    <AuthModel />
     {hiddenHeader || <Header />}
     <div
       className={clsx(

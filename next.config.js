@@ -7,6 +7,9 @@ module.exports = {
   i18n,
   ...withLess({}),
   env: {
+    GOOGLE_LOGIN_ID: process.env.GOOGLE_LOGIN_ID,
+    FACEBOOK_LOGIN_ID: process.env.FACEBOOK_LOGIN_ID,
     MAP_ACCESS_KEY: process.env.MAP_ACCESS_KEY,
+    API_URL: process.env.API_URL,
   },
 };

@@ -7,18 +7,19 @@ import {
   SearchOutlined,
   StarOutlined,
 } from "@ant-design/icons";
-import { Row } from "antd";
+import { Avatar, Row, Typography } from "antd";
 import clsx from "clsx";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { useWindowScroll } from "react-use";
 import { v4 as uuidv4 } from "uuid";
 
 import logo from "../../assets/logo.svg";
-import { headerLinks, paths } from "../../models/constants/routes";
+import { headerLinks } from "../../models/constants/routes";
+import { openAuthModel } from "../../store/action";
 import { LocaleSelect } from "../shared";
 import Drawer from "./drawer";
 import HeaderItem from "./headerItem";
@@ -27,6 +28,7 @@ const scrolledHeight = 10;
 
 const Header = () => {
   const router = useRouter();
+  const { authUser } = useSelector((state: any) => state.environment);
   const scroll = useWindowScroll();
   const { t } = useTranslation();
   const [visible, setVisible] = useState(false);
@@ -39,6 +41,8 @@ const Header = () => {
 
   const onOpenDrawerHandler = () => setVisible(true);
   const onCloseDrawerHandler = () => setVisible(false);
+
+  const onOpenModalHandler = () => openAuthModel();
 
   return (
     <>
@@ -67,26 +71,38 @@ const Header = () => {
           +scroll.y > scrolledHeight && "header__scroll"
         )}
       >
-        <div className="header__left">
-          <Image src={logo} />
-        </div>
-        <Row className="header__center">
-          {headerLinks.map((item, i) => (
-            <HeaderItem
-              key={uuidv4()}
-              link={item}
-              icon={({ className }) => {
-                const Icon = icons[i];
-                return <Icon className={className} />;
-              }}
-            >
-              {t(`header:menu.${item}`)}
-            </HeaderItem>
-          ))}
-        </Row>
-        <div className="header__right">
-          <LocaleSelect />
-          <Link href={paths.auth.login}>{t`auth:login`}</Link>
+        <div className="header__content container">
+          <div className="header__left">
+            <Image src={logo} />
+          </div>
+
+          <Row className="header__center">
+            {headerLinks.map((item, i) => (
+              <HeaderItem
+                key={uuidv4()}
+                link={item}
+                icon={({ className }) => {
+                  const Icon = icons[i];
+                  return <Icon className={className} />;
+                }}
+              >
+                {t(`header:menu.${item}`)}
+              </HeaderItem>
+            ))}
+          </Row>
+
+          <div className="header__right">
+            <LocaleSelect />
+            {authUser && authUser.id ? (
+              <Avatar src={authUser.image}>
+                {authUser.image || authUser.name[0]}
+              </Avatar>
+            ) : (
+              <Typography.Link
+                onClick={onOpenModalHandler}
+              >{t`auth:login`}</Typography.Link>
+            )}
+          </div>
         </div>
       </div>
       <Drawer visible={visible} onClose={onCloseDrawerHandler} />

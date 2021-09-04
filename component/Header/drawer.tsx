@@ -3,8 +3,8 @@ import { Divider, Drawer, Typography } from "antd";
 import { useTranslation } from "next-i18next";
 import React from "react";
 
-import { paths } from "../../models/constants/routes";
-import { Link, LocaleSelect } from "../shared";
+import { openAuthModel } from "../../store/action";
+import { LocaleSelect } from "../shared";
 
 interface IDrawerProps {
   visible: boolean;
@@ -14,6 +14,11 @@ interface IDrawerProps {
 const AppDrawer: React.FC<IDrawerProps> = ({ visible, onClose }) => {
   const { t } = useTranslation();
   const isAuth = false;
+
+  const onClickAuth = () => {
+    onClose();
+    openAuthModel();
+  };
 
   return (
     <Drawer
@@ -35,7 +40,13 @@ const AppDrawer: React.FC<IDrawerProps> = ({ visible, onClose }) => {
           <div className="drawer-center">center</div>
         </>
       ) : (
-        <Link href={paths.auth.login} className="drawer-login">
+        <div
+          className="drawer-login"
+          onClick={onClickAuth}
+          role="button"
+          onKeyDown={onClickAuth}
+          tabIndex={0}
+        >
           <div className="drawer-login__content">
             <LoginOutlined className="primary-color font-size-large" />
             <Typography.Link className="drawer-login__text font-size-medium">
@@ -46,7 +57,7 @@ const AppDrawer: React.FC<IDrawerProps> = ({ visible, onClose }) => {
           <Typography.Paragraph className="drawer-login__description">
             {t`header:loginDescription`}
           </Typography.Paragraph>
-        </Link>
+        </div>
       )}
     </Drawer>
   );
