@@ -5,5 +5,9 @@
     "/rating": "Rating",
     "/around": "Around me"
   },
-  "loginDescription": "You need to log in to store personal data, manage the application, tweak it for yourself and better understand your interests!"
+  "loginDescription": "You need to log in to store personal data, manage the application, tweak it for yourself and better understand your interests!",
+  "profile": "Profile",
+  "places": "My Places",
+  "setting": "Settings",
+  "contactAS": "Contact As"
 }

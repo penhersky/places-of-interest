@@ -1,10 +1,14 @@
 import { LoginOutlined } from "@ant-design/icons";
-import { Divider, Drawer, Typography } from "antd";
+import { Divider, Drawer, List, Row, Typography } from "antd";
 import { useTranslation } from "next-i18next";
 import React from "react";
+import { useSelector } from "react-redux";
+import { v4 as uuidv4 } from "uuid";
 
+import { paths } from "../../models/constants/routes";
 import { openAuthModel } from "../../store/action";
-import { LocaleSelect } from "../shared";
+import { Icon, Link, LocaleSelect } from "../shared";
+import { getEditionList, getUserNavigationList } from "./list";
 
 interface IDrawerProps {
   visible: boolean;
@@ -12,8 +16,8 @@ interface IDrawerProps {
 }
 
 const AppDrawer: React.FC<IDrawerProps> = ({ visible, onClose }) => {
+  const { authUser } = useSelector((state: any) => state.environment);
   const { t } = useTranslation();
-  const isAuth = false;
 
   const onClickAuth = () => {
     onClose();
@@ -27,17 +31,68 @@ const AppDrawer: React.FC<IDrawerProps> = ({ visible, onClose }) => {
       onClose={onClose}
       visible={visible}
       bodyStyle={{ padding: 0 }}
-      footer={
-        <div>
-          <LocaleSelect />
-        </div>
-      }
+      footer={<LocaleSelect />}
     >
-      {isAuth ? (
+      {authUser?.id ? (
         <>
-          <div className="drawer-top">top</div>
-          <Divider />
-          <div className="drawer-center">center</div>
+          <Link
+            className="drawer-top"
+            href={paths.user.profile.to}
+            as={paths.user.profile.as(authUser.id)}
+          >
+            <img
+              src={authUser.image}
+              alt={authUser.name}
+              className="drawer-top__image"
+            />
+            <div className="drawer-top__content">
+              <Typography.Title level={4}>{authUser.name}</Typography.Title>
+              <Typography.Text>{authUser.email}</Typography.Text>
+            </div>
+          </Link>
+          <Divider style={{ margin: "2px 0" }} />
+          <div className="drawer-center">
+            <List
+              dataSource={getUserNavigationList(authUser.id, t)}
+              itemLayout="horizontal"
+              renderItem={(item) => (
+                <Link
+                  className="drawer-center__list-item"
+                  key={uuidv4()}
+                  href={item.to}
+                  as={item.as}
+                >
+                  <Row justify="start">
+                    <Icon
+                      className="secondary-color font-size-medium drawer-center__list-icon"
+                      type={item.icon}
+                    />
+                    <Typography.Text>{item.label}</Typography.Text>
+                  </Row>
+                </Link>
+              )}
+            />
+            <Divider />
+            <List
+              dataSource={getEditionList(t)}
+              itemLayout="horizontal"
+              renderItem={(item) => (
+                <Link
+                  className="drawer-center__list-item"
+                  key={uuidv4()}
+                  href={item.to}
+                >
+                  <Row justify="start">
+                    <Icon
+                      className="secondary-color font-size-medium drawer-center__list-icon"
+                      type={item.icon}
+                    />
+                    <Typography.Text>{item.label}</Typography.Text>
+                  </Row>
+                </Link>
+              )}
+            />
+          </div>
         </>
       ) : (
         <div

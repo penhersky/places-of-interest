@@ -18,9 +18,9 @@ import { useWindowScroll } from "react-use";
 import { v4 as uuidv4 } from "uuid";
 
 import logo from "../../assets/logo.svg";
-import { headerLinks } from "../../models/constants/routes";
+import { headerLinks, paths } from "../../models/constants/routes";
 import { openAuthModel } from "../../store/action";
-import { LocaleSelect } from "../shared";
+import { Link, LocaleSelect } from "../shared";
 import Drawer from "./drawer";
 import HeaderItem from "./headerItem";
 
@@ -94,9 +94,14 @@ const Header = () => {
           <div className="header__right">
             <LocaleSelect />
             {authUser && authUser.id ? (
-              <Avatar src={authUser.image}>
-                {authUser.image || authUser.name[0]}
-              </Avatar>
+              <Link
+                href={paths.user.profile.to}
+                as={paths.user.profile.as(authUser.id)}
+              >
+                <Avatar src={authUser.image}>
+                  {authUser.image || authUser.name[0]}
+                </Avatar>
+              </Link>
             ) : (
               <Typography.Link
                 onClick={onOpenModalHandler}

@@ -19,13 +19,37 @@
 }
 
 .drawer-top {
-  height: 160px;
+  height: 200px;
   display: flex;
   flex-flow: column wrap;
   justify-content: flex-end;
-  padding: 10px 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  overflow: hidden;
+  position: relative;
+  &__image {
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%);
+  }
+
+  &__content {
+    background: linear-gradient(rgba(255, 255, 255, 0), white);
+    padding: 10px 16px;
+  }
 }
 
 .drawer-center {
   padding: 10px 16px;
+  &__list-item {
+    display: flex;
+    padding: 10px 0;
+  }
+  &__list-icon {
+    margin-right: 16px;
+  }
 }
