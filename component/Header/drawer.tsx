@@ -1,14 +1,13 @@
 import { LoginOutlined } from "@ant-design/icons";
-import { Divider, Drawer, List, Row, Typography } from "antd";
+import { Divider, Drawer, Typography } from "antd";
 import { useTranslation } from "next-i18next";
 import React from "react";
 import { useSelector } from "react-redux";
-import { v4 as uuidv4 } from "uuid";
 
 import { paths } from "../../models/constants/routes";
 import { openAuthModel } from "../../store/action";
-import { Icon, Link, LocaleSelect } from "../shared";
-import { getEditionList, getUserNavigationList } from "./list";
+import { Link, LocaleSelect } from "../shared";
+import UserMenuList from "./userMenuList";
 
 interface IDrawerProps {
   visible: boolean;
@@ -52,46 +51,7 @@ const AppDrawer: React.FC<IDrawerProps> = ({ visible, onClose }) => {
           </Link>
           <Divider style={{ margin: "2px 0" }} />
           <div className="drawer-center">
-            <List
-              dataSource={getUserNavigationList(authUser.id, t)}
-              itemLayout="horizontal"
-              renderItem={(item) => (
-                <Link
-                  className="drawer-center__list-item"
-                  key={uuidv4()}
-                  href={item.to}
-                  as={item.as}
-                >
-                  <Row justify="start">
-                    <Icon
-                      className="secondary-color font-size-medium drawer-center__list-icon"
-                      type={item.icon}
-                    />
-                    <Typography.Text>{item.label}</Typography.Text>
-                  </Row>
-                </Link>
-              )}
-            />
-            <Divider />
-            <List
-              dataSource={getEditionList(t)}
-              itemLayout="horizontal"
-              renderItem={(item) => (
-                <Link
-                  className="drawer-center__list-item"
-                  key={uuidv4()}
-                  href={item.to}
-                >
-                  <Row justify="start">
-                    <Icon
-                      className="secondary-color font-size-medium drawer-center__list-icon"
-                      type={item.icon}
-                    />
-                    <Typography.Text>{item.label}</Typography.Text>
-                  </Row>
-                </Link>
-              )}
-            />
+            <UserMenuList user={authUser} />
           </div>
         </>
       ) : (

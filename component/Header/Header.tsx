@@ -7,7 +7,7 @@ import {
   SearchOutlined,
   StarOutlined,
 } from "@ant-design/icons";
-import { Avatar, Row, Typography } from "antd";
+import { Avatar, Button, Popover, Row, Typography } from "antd";
 import clsx from "clsx";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -20,9 +20,10 @@ import { v4 as uuidv4 } from "uuid";
 import logo from "../../assets/logo.svg";
 import { headerLinks, paths } from "../../models/constants/routes";
 import { openAuthModel } from "../../store/action";
-import { Link, LocaleSelect } from "../shared";
+import { Icon, Link, LocaleSelect } from "../shared";
 import Drawer from "./drawer";
 import HeaderItem from "./headerItem";
+import UserMenuList from "./userMenuList";
 
 const scrolledHeight = 10;
 
@@ -82,8 +83,8 @@ const Header = () => {
                 key={uuidv4()}
                 link={item}
                 icon={({ className }) => {
-                  const Icon = icons[i];
-                  return <Icon className={className} />;
+                  const IconL = icons[i];
+                  return <IconL className={className} />;
                 }}
               >
                 {t(`header:menu.${item}`)}
@@ -94,14 +95,29 @@ const Header = () => {
           <div className="header__right">
             <LocaleSelect />
             {authUser && authUser.id ? (
-              <Link
-                href={paths.user.profile.to}
-                as={paths.user.profile.as(authUser.id)}
-              >
-                <Avatar src={authUser.image}>
-                  {authUser.image || authUser.name[0]}
-                </Avatar>
-              </Link>
+              <>
+                <Link
+                  href={paths.user.profile.to}
+                  as={paths.user.profile.as(authUser.id)}
+                >
+                  <Avatar src={authUser.image}>
+                    {authUser.image || authUser.name[0]}
+                  </Avatar>
+                </Link>
+                <Popover
+                  trigger="focus"
+                  placement="bottomRight"
+                  style={{ padding: 0 }}
+                  content={<UserMenuList user={authUser} />}
+                >
+                  <Button type="link">
+                    <Icon
+                      type="DownOutlined"
+                      className="secondary-color font-size-medium margin-small cursor-pointer"
+                    />
+                  </Button>
+                </Popover>
+              </>
             ) : (
               <Typography.Link
                 onClick={onOpenModalHandler}
