@@ -7,7 +7,7 @@ import {
   SearchOutlined,
   StarOutlined,
 } from "@ant-design/icons";
-import { Avatar, Button, Popover, Row, Typography } from "antd";
+import { Button, Col, Popover, Row, Typography } from "antd";
 import clsx from "clsx";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -20,7 +20,7 @@ import { v4 as uuidv4 } from "uuid";
 import logo from "../../assets/logo.svg";
 import { headerLinks, paths } from "../../models/constants/routes";
 import { openAuthModel } from "../../store/action";
-import { Icon, Link, LocaleSelect } from "../shared";
+import { Avatar, Icon, Link, LocaleSelect } from "../shared";
 import Drawer from "./drawer";
 import HeaderItem from "./headerItem";
 import UserMenuList from "./userMenuList";
@@ -100,15 +100,38 @@ const Header = () => {
                   href={paths.user.profile.to}
                   as={paths.user.profile.as(authUser.id)}
                 >
-                  <Avatar src={authUser.image}>
-                    {authUser.image || authUser.name[0]}
-                  </Avatar>
+                  <Avatar image={authUser.image} name={authUser.name} />
                 </Link>
                 <Popover
                   trigger="focus"
                   placement="bottomRight"
                   style={{ padding: 0 }}
-                  content={<UserMenuList user={authUser} />}
+                  content={
+                    <div>
+                      <Link
+                        href={paths.user.profile.to}
+                        as={paths.user.profile.as(authUser.id)}
+                      >
+                        <Row>
+                          <Avatar
+                            size={50}
+                            image={authUser.image}
+                            name={authUser.name}
+                            className="margin-small"
+                          />
+                          <Col className="margin-small">
+                            <Typography.Title level={5}>
+                              {authUser.name}
+                            </Typography.Title>
+                            <Typography.Text type="secondary">
+                              {authUser.email}
+                            </Typography.Text>
+                          </Col>
+                        </Row>
+                      </Link>
+                      <UserMenuList user={authUser} />
+                    </div>
+                  }
                 >
                   <Button type="link">
                     <Icon
