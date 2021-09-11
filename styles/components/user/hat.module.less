@@ -1,0 +1,74 @@
+@import "../../variables.less";
+
+.user-hat {
+  background-color: @global-background;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 0 0 @border-radius-large @border-radius-large;
+
+  &__bar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  &__image {
+    width: 100%;
+    height: 230px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 0 0 @border-radius-large @border-radius-large;
+  }
+
+  &__btm {
+    position: absolute;
+    left: 30px;
+    bottom: 20px;
+    &__avatar {
+      width: 180px;
+      height: 180px;
+      border: solid 3px @global-background;
+    }
+
+    &__content {
+      padding: @padding-medium;
+    }
+  }
+}
+
+@media screen and (max-width: @mobile-version) {
+  .user-hat {
+    height: 220px;
+
+    &__image {
+      height: 130px;
+    }
+
+    &__btm {
+      width: 100%;
+      left: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      &__avatar {
+        width: 120px;
+        height: 120px;
+      }
+
+      &__content {
+        width: 100%;
+        padding: @padding-medium;
+        display: flex;
+        justify-content: center;
+
+        h1 {
+          font-size: 26px;
+        }
+      }
+    }
+  }
+}

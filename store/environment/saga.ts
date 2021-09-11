@@ -5,7 +5,7 @@ import { LOAD_ENVIRONMENT, SET_AUTH_USER } from "./types";
 
 const { API_URL } = process.env;
 
-const getAuthUser = async () => axios.get(`${API_URL}/users/1`);
+const getAuthUser = async () => axios.get(`${API_URL}/authUser`);
 
 export function* loadUser(): Generator {
   const response: any = yield call(getAuthUser);

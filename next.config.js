@@ -12,4 +12,7 @@ module.exports = {
     MAP_ACCESS_KEY: process.env.MAP_ACCESS_KEY,
     API_URL: process.env.API_URL,
   },
+  images: {
+    domains: ["cdn.pixabay.com"],
+  },
 };

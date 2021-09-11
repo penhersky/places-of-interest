@@ -5,3 +5,4 @@ export const CLOSE_AUTH_MODEL = "CLOSE_AUTH_MODEL";
 
 // actions
 export const SET_AUTH_USER = "SET_AUTH_USER";
+export const LOG_OUT = "LOG_OUT";

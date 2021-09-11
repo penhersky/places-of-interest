@@ -1,5 +1,10 @@
 import { IAuthUser } from "../../models/entity";
-import { CLOSE_AUTH_MODEL, OPEN_AUTH_MODEL, SET_AUTH_USER } from "./types";
+import {
+  CLOSE_AUTH_MODEL,
+  LOG_OUT,
+  OPEN_AUTH_MODEL,
+  SET_AUTH_USER,
+} from "./types";
 
 export interface IAction<T> {
   type: string;
@@ -25,6 +30,11 @@ const environment = (
       return {
         ...state,
         authUser: action.payload,
+      };
+    case LOG_OUT:
+      return {
+        ...state,
+        authUser: undefined,
       };
     case OPEN_AUTH_MODEL:
       return {
