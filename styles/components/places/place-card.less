@@ -1,0 +1,79 @@
+@import "../../variables.less";
+
+.place-card {
+  background-color: @global-background;
+  height: 300px;
+  border-radius: @border-radius-large;
+  transition: linear @animation-speed-fast;
+  border: solid 1px transparent;
+  overflow: hidden;
+  position: relative;
+  margin: @margin-small;
+  display: flex;
+  flex-flow: nowrap row;
+
+  &:hover {
+    border-color: @secondary-color;
+  }
+
+  &__imageContainer {
+    height: 300px;
+    width: 570px;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    border-radius: @border-radius-large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__image {
+      display: inline-block;
+      width: 100%;
+      vertical-align: middle;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-flow: nowrap column;
+    padding: @padding-medium;
+    &__title {
+      font-size: 24px;
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .place-card {
+    height: 200px;
+
+    &__imageContainer {
+      max-width: 380px;
+    }
+
+    &__content {
+      &__title {
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: @mobile-version) {
+  .place-card {
+    display: flex;
+    flex-flow: nowrap column;
+    height: auto;
+
+    &__imageContainer {
+      max-width: 100%;
+      max-height: 320px;
+    }
+
+    &__content {
+      &__title {
+        font-size: 14px;
+      }
+    }
+  }
+}
