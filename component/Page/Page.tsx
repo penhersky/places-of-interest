@@ -1,10 +1,17 @@
 import clsx from "clsx";
 import React from "react";
 
-import { IPageWrapperProps } from "../../models";
 import AuthModel from "../auth/model/AuthModel";
 import Header from "../Header/Header";
-import Seo from "./seo";
+import Seo, { ISeoProps } from "./seo";
+
+export interface IPageWrapperProps {
+  children: React.ReactNode;
+  offContainer?: boolean;
+  classNames?: string;
+  hiddenHeader?: boolean;
+  seo: ISeoProps;
+}
 
 const Page: React.FC<IPageWrapperProps> = ({
   children,

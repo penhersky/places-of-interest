@@ -1,11 +1,15 @@
 import Head from "next/head";
 import React from "react";
 
-import { ISeoProps } from "../../models";
+export interface ISeoProps {
+  description: string;
+  keywords: string[];
+  title: string | string[];
+}
 
 const SEO: React.FC<ISeoProps> = ({ description, keywords, title }) => (
   <Head>
-    <title>{title}</title>
+    <title>{title instanceof Array ? title.join(" | ") : title}</title>
     <meta name="description" content={description} />
     <meta name="twitter:description" content={description} />
     <meta name="og:description" content={description} />
