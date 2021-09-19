@@ -62,7 +62,7 @@ const Settings: NextPage = () => {
             key={item.key}
             className="card settings__tabs__item"
           >
-            {item.tab}
+            <item.Tab />
           </TabPane>
         ))}
       </Tabs>

@@ -1,29 +1,31 @@
 import { TFunction } from "next-i18next";
 
+import PublicProfile from "./PublicProfile/PublicProfile";
+
 // eslint-disable-next-line import/prefer-default-export
 export const getSettingsNavigationList = (t: TFunction) => [
   {
     label: t("settings:publicProfile"),
     icon: "SmileOutlined",
-    tab: "PublicProfile",
+    Tab: PublicProfile,
     key: "public-profile",
   },
   {
     label: t("settings:accountSettings"),
     icon: "UserOutlined",
-    tab: "accountSettings",
+    Tab: "accountSettings",
     key: "account-settings",
   },
   {
     label: t("settings:notification"),
     icon: "BellOutlined",
-    tab: "notification",
+    Tab: "notification",
     key: "notification",
   },
   {
     label: t("settings:security"),
     icon: "SafetyOutlined",
-    tab: "security",
+    Tab: "security",
     key: "security",
   },
 ];
