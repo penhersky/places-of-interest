@@ -11,7 +11,7 @@ import { getSettingsNavigationList } from "../../../component/settings";
 import { Icon } from "../../../component/shared";
 import { IStore } from "../../../models";
 import { paths } from "../../../models/constants/routes";
-import getLanguage from "../../../services/OnlyLocale.service";
+import getLanguage from "../../../services/initialProps/OnlyLocale.service";
 
 const { TabPane } = Tabs;
 

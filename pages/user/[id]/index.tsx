@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { PageWrapper } from "../../../component";
 import { UserHat } from "../../../component/user";
 import { IUser } from "../../../models/entity/user";
-import { getUserPageProps } from "../../../services";
+import { getUserPageProps } from "../../../services/initialProps";
 
 interface IUserPageProps {
   user?: IUser;

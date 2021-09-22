@@ -1,16 +1,21 @@
-import axios from "axios";
 import { call, put, spawn, takeLatest } from "redux-saga/effects";
 
+import client from "../../services/client";
+import { query } from "../../services/schemas";
 import { LOAD_ENVIRONMENT, SET_AUTH_USER } from "./types";
 
-const { API_URL } = process.env;
-
-const getAuthUser = async () => axios.get(`${API_URL}/authUser`);
+const getAuthUser = async () => {
+  const { data } = await client.query({
+    query: query.user.AUTH_USER,
+    variables: { id: 1 },
+  });
+  return data.AuthUser;
+};
 
 export function* loadUser(): Generator {
-  const response: any = yield call(getAuthUser);
+  const data: any = yield call(getAuthUser);
 
-  yield put({ type: SET_AUTH_USER, payload: response.data });
+  yield put({ type: SET_AUTH_USER, payload: data });
 }
 
 export function* environmentWorker() {

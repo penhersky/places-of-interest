@@ -1,7 +1,7 @@
 import React from "react";
 
 import { PageWrapper } from "../../component";
-import { getLocale } from "../../services";
+import { getLocale } from "../../services/initialProps";
 
 const Login = () => (
   <PageWrapper seo={{ description: "", keywords: [], title: "" }}>

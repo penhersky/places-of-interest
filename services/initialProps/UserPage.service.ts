@@ -1,17 +1,22 @@
-import axios from "axios";
 import { GetServerSideProps } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-import { getUser } from "../models/constants/requestsUrl";
+import client from "../client";
+import { query } from "../schemas";
 
 const getProps: GetServerSideProps = async ({ locale, params }) => {
   try {
-    const user = await axios.get(getUser(params?.id as string));
+    const { data } = await client.query({
+      query: query.user.USER,
+      variables: {
+        id: params?.id as string,
+      },
+    });
 
     return {
       props: {
         ...(await serverSideTranslations(locale as string)),
-        user: user.data,
+        user: data.User,
       },
     };
   } catch (error) {

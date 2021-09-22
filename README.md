@@ -9,6 +9,7 @@
 - TypeScript
 - React
 - NextJS
+- Apollo-Graphql/client
 - Redux (redux-saga)
 - Ant Design
 - Next-i18next

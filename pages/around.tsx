@@ -7,7 +7,7 @@ import React from "react";
 import ReactMapGL, { Layer, Marker, Source } from "react-map-gl";
 
 import { PageWrapper } from "../component";
-import { getLocale } from "../services";
+import { getLocale } from "../services/initialProps";
 
 const { MAP_ACCESS_KEY } = process.env;
 

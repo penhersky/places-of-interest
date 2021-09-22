@@ -5,7 +5,7 @@ import { useTranslation } from "next-i18next";
 import fon from "../assets/home-fon.jpg";
 import { PageWrapper } from "../component";
 import { PlaceCard } from "../component/places";
-import { getHomeProps } from "../services";
+import { getHomeProps } from "../services/initialProps";
 
 const Home: NextPage = () => {
   // eslint-disable-next-line no-unused-vars
