@@ -8,19 +8,26 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      NODE_ENV: "development"
-      MAP_ACCESS_KEY: ${{ secrets.MAP_ACCESS_KEY }}
-      GOOGLE_LOGIN_ID: ${{ secrets.GOOGLE_LOGIN_ID }}
-      FACEBOOK_LOGIN_ID: ${{ secrets.FACEBOOK_LOGIN_ID }}
+    strategy:
+      matrix:
+        node-version: [14.x]
 
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        env:
+          NODE_ENV: "development"
+          MAP_ACCESS_KEY: ${{ secrets.MAP_ACCESS_KEY }}
+          GOOGLE_LOGIN_ID: ${{ secrets.GOOGLE_LOGIN_ID }}
+          FACEBOOK_LOGIN_ID: ${{ secrets.FACEBOOK_LOGIN_ID }}
+      - name: Telegram Action
+        if: cancelled() == false
+        uses: xinthink/action-telegram@v1.1
         with:
-          node-version: ["14.x", "16.x"]
-      - name: Show node.js version
-        run: node -v
+          botToken: ${{ secrets.TG_BOT_TOKEN_ID }}
+          chatId: ${{ secrets.TG_CHAT_ID }}
+          jobStatus: ${{ job.status }}
       - name: Install dependencies
         run: yarn install
 
