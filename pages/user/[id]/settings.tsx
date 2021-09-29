@@ -11,11 +11,12 @@ import { getSettingsNavigationList } from "../../../component/settings";
 import { Icon } from "../../../component/shared";
 import { IStore } from "../../../models";
 import { paths } from "../../../models/constants/routes";
-import getLanguage from "../../../services/initialProps/OnlyLocale.service";
+import { ISettingsProps } from "../../../models/pagesProps/Settings";
+import getSettingsPageProps from "../../../services/initialProps/Settings.service";
 
 const { TabPane } = Tabs;
 
-const Settings: NextPage = () => {
+const Settings: NextPage<ISettingsProps> = ({ error, data }) => {
   const router = useRouter();
   const { t } = useTranslation();
   const { authUser } = useSelector((store: IStore) => store.environment);
@@ -28,6 +29,8 @@ const Settings: NextPage = () => {
       }?tab=${key}`
     );
   };
+
+  if (error || !data) return <h1>Error</h1>;
 
   return (
     <PageWrapper
@@ -62,7 +65,7 @@ const Settings: NextPage = () => {
             key={item.key}
             className="card settings__tabs__item"
           >
-            <item.Tab />
+            <item.Tab user={data.publicProfile.user} />
           </TabPane>
         ))}
       </Tabs>
@@ -70,6 +73,6 @@ const Settings: NextPage = () => {
   );
 };
 
-export const getServerSideProps = getLanguage;
+export const getServerSideProps = getSettingsPageProps;
 
 export default Settings;

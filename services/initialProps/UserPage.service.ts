@@ -18,6 +18,7 @@ const getProps: GetServerSideProps = async ({ locale, params }) => {
         ...(await serverSideTranslations(locale as string)),
         user: data.User,
       },
+      notFound: !data.User,
     };
   } catch (error) {
     return {

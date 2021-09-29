@@ -16,7 +16,7 @@ const LocaleSelect = () => {
 
   const onChangeLanguage = (value: string) => {
     setVisible(false);
-    router.replace(router.pathname, router.pathname, { locale: value });
+    router.replace(router.pathname, router.asPath, { locale: value });
   };
 
   return (

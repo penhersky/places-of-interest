@@ -11,6 +11,7 @@ interface IFromControlProps {
   // eslint-disable-next-line no-unused-vars
   onFinishFailed: (error: IFailedProps) => void;
   onReset?: () => void;
+  initialValues?: any;
   loading?: boolean;
   showCancel?: boolean;
   submitText?: string;
@@ -29,7 +30,9 @@ const FormControl: React.FC<IFromControlProps> = ({
   showCancel = true,
   submitText,
   loading,
+  initialValues,
 }) => {
+  const [form] = Form.useForm();
   const { t } = useTranslation();
   const [changed, setChanged] = useState(false);
 
@@ -42,6 +45,7 @@ const FormControl: React.FC<IFromControlProps> = ({
   const onResetHandler = () => {
     if (onReset) onReset();
     setChanged(false);
+    form.setFieldsValue(initialValues);
   };
 
   return (
@@ -52,6 +56,8 @@ const FormControl: React.FC<IFromControlProps> = ({
       onFinish={onFinish}
       onFinishFailed={onFinishFailedHandler}
       autoComplete="off"
+      form={form}
+      defaultValue={initialValues}
     >
       <Fields onChange={onChangeHandler} Wrap={Form.Item} />
 

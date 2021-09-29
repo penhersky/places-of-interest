@@ -1,6 +1,7 @@
 {
-  "publicProfile": "Public profile",
-  "accountSettings": "Account settings",
-  "security": "Security",
-  "notification": "Notification"
+  "personal-info": "Personal Info",
+  "loginAndSecurity": "Login & security",
+  "privacy": "Privacy & sharing",
+  "notification": "Notification",
+  "globalPreferences": "Global preferences"
 }
