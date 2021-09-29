@@ -1,0 +1,45 @@
+name: Places of interest CI
+on:
+  push:
+    branches: [main, development]
+  pull_request:
+    branches: [main, development]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      NODE_ENV: "development"
+      MAP_ACCESS_KEY: ${{ secrets.MAP_ACCESS_KEY }}
+      GOOGLE_LOGIN_ID: ${{ secrets.GOOGLE_LOGIN_ID }}
+      FACEBOOK_LOGIN_ID: ${{ secrets.FACEBOOK_LOGIN_ID }}
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ["14.x", "16.x"]
+      - name: Show node.js version
+        run: node -v
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Check format
+        run: npm run check-format
+      - name: Check lint
+        run: npm run check-lint
+      - name: Check types
+        run: npm run check-types
+
+      - name: Test
+        run: yarn test-all
+      - name: Build
+        run: yarn build
+
+      - name: Telegram Action
+        if: cancelled() == false
+        uses: xinthink/action-telegram@v1.1
+        with:
+          botToken: ${{ secrets.TG_BOT_TOKEN_ID }}
+          chatId: ${{ secrets.TG_CHAT_ID }}
+          jobStatus: ${{ job.status }}
