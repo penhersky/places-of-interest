@@ -4,7 +4,7 @@ import { PageWrapper } from "../../component";
 import { getLocale } from "../../services/initialProps";
 
 const Login = () => (
-  <PageWrapper seo={{ description: "", keywords: [], title: "" }}>
+  <PageWrapper pageKey="login">
     <h1>Login</h1>
   </PageWrapper>
 );

@@ -1,0 +1,40 @@
+{
+  "main": {
+    "description": "",
+    "keywords": "word1,word2",
+    "title": "Main"
+  },
+
+  "home": {
+    "description": "",
+    "keywords": "word1,word2",
+    "title": "Home"
+  },
+  "around": {
+    "description": "",
+    "keywords": "word1,word2",
+    "title": "around"
+  },
+
+  "user": {
+    "description": "",
+    "keywords": "word1,word2",
+    "title": "User {{name}}"
+  },
+  "login": {
+    "description": "",
+    "keywords": "word1,word2",
+    "title": "Login"
+  },
+  "settings": {
+    "description": "",
+    "keywords": "word1,word2",
+    "title": "Settings"
+  },
+
+  "notFound": {
+    "description": "",
+    "keywords": "word1,word2",
+    "title": "NotFound"
+  }
+}

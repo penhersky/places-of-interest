@@ -5,7 +5,7 @@ import { PageWrapper } from "../component";
 import { Link } from "../component/shared";
 
 const Page404 = () => (
-  <PageWrapper seo={{ description: "", keywords: [], title: "" }} hiddenHeader>
+  <PageWrapper pageKey="notFound" hiddenHeader>
     <Result
       status="404"
       title="404"

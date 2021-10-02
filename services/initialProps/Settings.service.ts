@@ -11,7 +11,7 @@ const getProps: GetServerSideProps = async ({
 }): Promise<GetServerSidePropsResult<ISettingsProps>> => {
   try {
     const { data, error = null } = await client.query({
-      query: query.user.AUTH_USER,
+      query: query.user.USER,
       variables: {
         id: params?.id as string,
       },
@@ -21,12 +21,13 @@ const getProps: GetServerSideProps = async ({
       props: {
         ...(await serverSideTranslations(locale as string)),
         data: {
-          publicProfile: {
-            user: data.AuthUser || null,
+          personalInfo: {
+            user: data.User || null,
           },
-          accountSettings: {},
+          loginAndSecurity: {},
           notifications: {},
-          Security: {},
+          privacyAndSharing: {},
+          globalPreferences: {},
         },
         error,
       },
@@ -35,7 +36,7 @@ const getProps: GetServerSideProps = async ({
     return {
       props: {
         ...(await serverSideTranslations(locale as string)),
-        error,
+        error: error.message,
       },
     };
   }

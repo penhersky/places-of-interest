@@ -31,12 +31,8 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Check format
-        run: npm run check-format
       - name: Check lint
-        run: npm run check-lint
-      - name: Check types
-        run: npm run check-types
+        run: npm run lint
 
       - name: Test
         run: yarn test-all

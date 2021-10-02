@@ -18,6 +18,11 @@ export const USER = gql`
       name
       email
       image
+      backgroundImage
+      gender
+      birth
+      phoneNumber
+      createdAt
     }
   }
 `;

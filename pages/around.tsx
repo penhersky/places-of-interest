@@ -28,7 +28,7 @@ const Around = () => {
   });
 
   return (
-    <PageWrapper seo={{ description: "", keywords: [], title: "" }}>
+    <PageWrapper pageKey="around">
       <div style={{ height: "50vh", width: "100%" }}>
         <ReactMapGL
           // eslint-disable-next-line react/jsx-props-no-spreading

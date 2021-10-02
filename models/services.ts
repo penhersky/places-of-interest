@@ -4,4 +4,4 @@ export interface Locale {
   locale: string;
 }
 
-export type IServiceError = ApolloError | null;
+export type IServiceError = ApolloError | null | string;

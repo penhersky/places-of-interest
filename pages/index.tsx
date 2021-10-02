@@ -14,7 +14,7 @@ const Home: NextPage = () => {
   return (
     <div className="home">
       <img className="home__background" src={fon.src} alt="home" />
-      <PageWrapper seo={{ description: "", keywords: [], title: "title" }}>
+      <PageWrapper pageKey="main">
         <div>
           <div className="home__preview">
             <Typography.Title>Hello</Typography.Title>

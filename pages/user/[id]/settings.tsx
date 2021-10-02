@@ -33,14 +33,7 @@ const Settings: NextPage<ISettingsProps> = ({ error, data }) => {
   if (error || !data) return <h1>Error</h1>;
 
   return (
-    <PageWrapper
-      seo={{
-        description: "",
-        keywords: [],
-        title: [t("header:settings"), authUser?.name as string],
-      }}
-      classNames="settings"
-    >
+    <PageWrapper pageKey="settings" classNames="settings">
       <Row className="card settings__title" justify="center" align="middle">
         <SettingFilled className="font-size-large margin-small" />
         <Typography.Title level={2}>{t("header:settings")}</Typography.Title>
@@ -65,7 +58,7 @@ const Settings: NextPage<ISettingsProps> = ({ error, data }) => {
             key={item.key}
             className="card settings__tabs__item"
           >
-            <item.Tab user={data.publicProfile.user} />
+            <item.Tab user={data.personalInfo.user} />
           </TabPane>
         ))}
       </Tabs>

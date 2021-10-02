@@ -14,7 +14,7 @@ const User: NextPage<IUserPageProps> = ({ user: propUser }) => {
   const [user] = useState(propUser as IUser);
   if (!user) return <div />;
   return (
-    <PageWrapper seo={{ description: "", keywords: [], title: `${user.name}` }}>
+    <PageWrapper pageKey="user" additionalSeo={{ title: { name: user.name } }}>
       <UserHat user={user} />
       {user.name}
     </PageWrapper>

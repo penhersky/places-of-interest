@@ -5,15 +5,17 @@ export interface IPublicProfile {
   user: IUser;
 }
 
-export interface IAccountSettings {}
+export interface ILoginAndSecurity {}
 export interface INotificationsSettings {}
-export interface ISecuritySettings {}
+export interface IPrivacyAndSharing {}
+export interface IGlobalPreferences {}
 
 export interface ISettingsData {
-  publicProfile: IPublicProfile;
-  accountSettings: {};
-  notifications: {};
-  Security: {};
+  personalInfo: IPublicProfile;
+  loginAndSecurity: ILoginAndSecurity;
+  notifications: INotificationsSettings;
+  privacyAndSharing: IPrivacyAndSharing;
+  globalPreferences: IGlobalPreferences;
 }
 
 export type ISettingsProps = {
