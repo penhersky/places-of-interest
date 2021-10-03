@@ -48,6 +48,10 @@ const FormControl: React.FC<IFromControlProps> = ({
     form.setFieldsValue(initialValues);
   };
 
+  React.useEffect(() => {
+    form.setFieldsValue(initialValues);
+  }, []);
+
   return (
     <Form
       layout="vertical"

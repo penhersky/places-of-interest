@@ -13,7 +13,6 @@
   }
 
   &__tabs {
-    min-height: 100%;
     overflow: hidden;
     width: 100%;
     border-radius: @border-radius-base;
@@ -22,11 +21,29 @@
       min-width: 200px;
       background-color: @global-background;
       border-radius: @border-radius-base;
+      height: max-content;
     }
 
     &__item {
       width: 100%;
       margin: 0 10px;
+    }
+  }
+}
+
+@media screen and (max-width: @mobile-version) {
+  .settings {
+    &__tabs {
+      display: flex;
+      flex-flow: nowrap column;
+      &__item {
+        width: 100%;
+        margin: @margin-small;
+      }
+    }
+
+    .ant-tabs-nav {
+      margin: @margin-small;
     }
   }
 }

@@ -1,7 +1,18 @@
 {
-  "personal-info": "Personal Info",
-  "loginAndSecurity": "Login & security",
-  "privacy": "Privacy & sharing",
-  "notification": "Notification",
-  "globalPreferences": "Global preferences"
+  "personal-info": {
+    "name": "Personal Info",
+    "username": "Public name",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "gender": "Gender",
+    "birthday": "Date of birth",
+    "phoneNumber": "Phone number"
+  },
+  "loginAndSecurity": {
+    "name": "Login & security"
+  },
+  "privacy": { "name": "Privacy & sharing" },
+  "notification": { "name": "Notification" },
+  "globalPreferences": { "name": "Global preferences" }
 }

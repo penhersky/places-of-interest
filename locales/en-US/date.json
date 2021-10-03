@@ -1,0 +1,28 @@
+{
+  "datePicker": {
+    "today": "",
+    "now": "",
+    "backToToday": "",
+    "ok": "",
+    "clear": "",
+    "month": "",
+    "year": "",
+    "timeSelect": "",
+    "dateSelect": "",
+    "monthSelect": "",
+    "yearSelect": "",
+    "decadeSelect": "",
+    "previousMonth": " (PageUp)",
+    "nextMonth": " (PageDown)",
+    "previousYear": " (Control + left)",
+    "nextYear": " (Control + right)",
+    "previousDecade": "",
+    "nextDecade": "",
+    "previousCentury": "",
+    "nextCentury": "",
+    "placeholder": "",
+    "timePlaceholder": "",
+    "days": ", ,",
+    "months": ", ,"
+  }
+}

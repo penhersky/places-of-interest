@@ -1,4 +1,5 @@
 name: Places of interest CI
+
 on:
   push:
     branches: [main, development]
@@ -8,9 +9,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
-        node-version: ["14"]
+        node-version: [14.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -21,6 +23,8 @@ jobs:
           MAP_ACCESS_KEY: ${{ secrets.MAP_ACCESS_KEY }}
           GOOGLE_LOGIN_ID: ${{ secrets.GOOGLE_LOGIN_ID }}
           FACEBOOK_LOGIN_ID: ${{ secrets.FACEBOOK_LOGIN_ID }}
+        with:
+          node-version: ${{ matrix.node-version }}
       - name: Telegram Action
         if: cancelled() == false
         uses: xinthink/action-telegram@v1.1

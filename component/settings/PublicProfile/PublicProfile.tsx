@@ -1,14 +1,18 @@
-import { Input } from "antd";
-import React, { useState } from "react";
+import { Input, Select } from "antd";
+import { useTranslation } from "next-i18next";
+import React from "react";
+import { v4 as uuid } from "uuid";
 
 import { IPublicProfile } from "../../../models/pagesProps/Settings";
+import { DatePicker } from "../../shared";
 import FormControl, {
   IFailedProps,
 } from "../../shared/FormControl/FormControl";
+import fieldsList from "./fieldsList";
 
 const PublicProfile: React.FC<IPublicProfile> = ({ user }) => {
-  // eslint-disable-next-line no-unused-vars
-  const [name, setName] = useState(user.name);
+  const { t } = useTranslation();
+  // const loading = false;
 
   const onFinishHandler = (value: any) => {
     // eslint-disable-next-line no-console
@@ -16,7 +20,6 @@ const PublicProfile: React.FC<IPublicProfile> = ({ user }) => {
   };
   const onFinishFailedHandler = (error: IFailedProps) => {
     // eslint-disable-next-line no-console
-    setName(user.name);
     console.log(error);
   };
 
@@ -25,16 +28,25 @@ const PublicProfile: React.FC<IPublicProfile> = ({ user }) => {
       <FormControl
         onFinish={onFinishHandler}
         onFinishFailed={onFinishFailedHandler}
-        initialValues={{ username: name }}
+        initialValues={user}
         Fields={({ onChange, Wrap }) => (
           <>
-            <Wrap
-              label="Username"
-              name="username"
-              validateStatus="validating"
-              hasFeedback
-            >
-              <Input onChange={onChange} />
+            {fieldsList.map((field) => (
+              <Wrap
+                label={t(field.label)}
+                name={field.name}
+                rules={field.rules}
+                hasFeedback
+                key={uuid()}
+              >
+                <Input onChange={onChange} />
+              </Wrap>
+            ))}
+            <Wrap label={t("settings:personal-info.birthday")} name="birthday">
+              <DatePicker onChange={onChange} />
+            </Wrap>
+            <Wrap label={t("settings:personal-info.gender")} name="gender">
+              <Select onChange={onChange} />
             </Wrap>
           </>
         )}

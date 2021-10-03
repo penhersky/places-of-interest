@@ -7,11 +7,13 @@ export interface IAuthUser {
 export interface IUser {
   id: string;
   name: string;
+  firstName: string;
+  lastName: string;
   email: string;
   image?: string;
   backgroundImage?: string;
   gender?: string;
-  birth?: string;
+  birthday?: string;
   phoneNumber?: string;
   createdAt: string;
 }

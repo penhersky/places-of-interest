@@ -16,11 +16,13 @@ export const USER = gql`
     User(id: $id) {
       id
       name
+      firstName
+      lastName
       email
       image
       backgroundImage
       gender
-      birth
+      birthday
       phoneNumber
       createdAt
     }

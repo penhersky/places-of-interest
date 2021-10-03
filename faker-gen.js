@@ -24,13 +24,15 @@ const generateWithId = (count, generator) => {
 // users generation
 const generateUsers = (number) =>
   generateWithId(number, (id) => ({
-    name: faker.name.firstName(),
+    name: faker.name.findName(),
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
     description: canBeNull(id, faker.lorem.paragraphs(2)),
     image: canBeNull(id, faker.image.avatar()),
     backgroundImage: canBeNull(id, faker.image.nature()),
     email: faker.internet.email(),
     gender: canBeNull(id, faker.name.gender()),
-    birth: canBeNull(id, faker.date.past()),
+    birthday: canBeNull(id, faker.date.past()),
     phoneNumber: canBeNull(id, faker.phone.phoneNumber()),
     createdAt: faker.date.past(),
   }));
